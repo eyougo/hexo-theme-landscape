@@ -4,6 +4,9 @@
 var _ = require('lodash');
 
 hexo.extend.helper.register('url_for_lang', function(lang){
+    if (lang.length === 0) {
+        return "/";
+    }
     var p = this.url_for(this.page.path);
     var language = "/" + this.config.language;
     if (_.startsWith(p, language)) {
